@@ -169,4 +169,32 @@ public class BluetoothData {
         available11 = true;
         notifyAll();
     }
+//public synchronized void put(InputStream input) {
+//    while (available == true) {
+//        try {
+//            wait();
+//        } catch (InterruptedException e) { }
+//    }
+//    inputStream = input;
+//    available = true;
+//       notifyAll();
+//}
+
+
+    public synchronized void reinitialize()
+    {
+        available = true;
+        available1 = true;
+        available2 = true;
+        available3 = true;
+        available4 = true;
+        available5 = true;
+        available6 = true;
+        available7 = true;
+        available8 = true;
+        available9 = true;
+        available10 = true;
+        available11 = true;
+        notifyAll();
+    }
 }

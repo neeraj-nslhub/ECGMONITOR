@@ -26,7 +26,7 @@ public class BoardingActivity extends AppCompatActivity {
         activityBoardingBinding.signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BoardingActivity.this, LogInEmail.class);
+                Intent intent = new Intent(BoardingActivity.this, LogIn.class);
                 startActivity(intent);
             }
         });

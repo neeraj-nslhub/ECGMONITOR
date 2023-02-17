@@ -137,6 +137,7 @@ public class MyLineChartThree
             mLineChart.setVisibleXRange(500, 300);
             mLineChart.moveViewToX(data.getEntryCount());
 
+
         }
     }
     private LineDataSet createSet() {

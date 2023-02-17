@@ -2,11 +2,15 @@ package com.example.ecgmonitor.classes;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.ecgmonitor.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -22,6 +26,8 @@ public class MyLineChartTen {
 
     Context mContext;
     LineChart mLineChart;
+    YAxis leftAxis;
+    LimitLine ll;
 
     public MyLineChartTen(Context context, LineChart lineChart) {
 
@@ -66,13 +72,14 @@ public class MyLineChartTen {
         xl.setAvoidFirstLastClipping(true);
         xl.setEnabled(true);
 
-        YAxis leftAxis = mLineChart.getAxisLeft();
+        leftAxis = mLineChart.getAxisLeft();
         leftAxis.setEnabled(true);
         leftAxis.setTextColor(R.color.red);
         leftAxis.setDrawGridLines(false);
         leftAxis.setAxisMaximum(5f);
         leftAxis.setAxisMinimum(-5f);
         leftAxis.setDrawGridLines(false);
+
 
 
         YAxis rightAxis = mLineChart.getAxisRight();
@@ -131,6 +138,32 @@ public class MyLineChartTen {
                 data.addDataSet(set);
             }
             data.addEntry(new Entry(set.getEntryCount(), event), 0);
+
+//            ll.setLineColor(Color.RED);
+//            ll.setLineWidth(4f);
+//            ll.setTextColor(Color.BLACK);
+//            ll.setTextSize(12f);
+            if(event == -0.145f) {
+                if( ll!=null)
+                   leftAxis.removeLimitLine(ll);
+                ll = new LimitLine(-0.145f, "Pressure High");
+                 ll.setLineColor(Color.TRANSPARENT);
+                leftAxis.addLimitLine(ll);
+
+
+            }
+            else if(event == -0.08f)
+            {
+                if( ll!=null)
+                    leftAxis.removeLimitLine(ll);
+                 ll = new LimitLine(-0.08f, "low sugar");
+                ll.setLineColor(Color.TRANSPARENT);
+
+                ll.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
+                leftAxis.addLimitLine(ll);
+            }
+
+
             data.notifyDataChanged();
             mLineChart.notifyDataSetChanged();
             mLineChart.setVisibleXRange(500, 300);

@@ -122,7 +122,7 @@ public class LeadFiveLineChart extends Thread{
     }
     public void run() {
 
-        mInputStream = mData.get4();
+        mInputStream = mData.get();
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(mInputStream));
         try {

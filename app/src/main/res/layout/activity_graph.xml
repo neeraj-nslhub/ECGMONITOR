@@ -22,7 +22,7 @@
             android:layout_height="0dp"
             android:background="@drawable/graph_img"
             android:layout_weight="1">
-            <com.github.mikephil.charting.charts.LineChart
+            <com.github.mikephil.charting.charts.CombinedChart
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/line_chart_one"/>
@@ -193,6 +193,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_alignParentBottom="true"
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -202,26 +203,32 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="@drawable/button"
             android:text="New Entry"/>
         <Button
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="@drawable/button"
             android:text="Patient Record"/>
         <Button
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="@drawable/button"
             android:text="Last Record"/>
         <Button
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="@drawable/button"
             android:text="Profile"/>
         <Button
+            android:id="@+id/setting_btn"
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="@drawable/button"
             android:text="Setting"/>
 
     </LinearLayout>

@@ -13,14 +13,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
     <TextView
+        android:fontFamily="@font/montserrat_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="REGISTER"
         android:textStyle="bold"
         android:letterSpacing=".05"
         android:textColor="@color/red"
-        android:textSize="35sp"/>
+        android:textSize="@dimen/parent_header_size"/>
     <TextView
+        android:fontFamily="@font/montserrat_regular"
         android:letterSpacing=".05"
         android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
@@ -28,18 +30,21 @@
         android:text="What's Your Email?"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="18sp"/>
+        android:textSize="@dimen/child_header_size"/>
         <RelativeLayout
             android:layout_marginTop="11dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/email_edit_text"
+            android:fontFamily="@font/montserrat_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Email"
+            android:textSize="@dimen/edit_text_size"
             android:backgroundTint="@color/black"/>
             <ImageButton
-                android:id="@+id/email_btn"
+                android:id="@+id/email_validate_btn"
                 android:layout_marginRight="5dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"

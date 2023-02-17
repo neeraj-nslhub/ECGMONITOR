@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LineChartActivity">
+    <Spinner
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:id="@+id/spinner"
+        android:entries="@array/leads_array"
+        android:prompt="@string/default_lead"/>
+    <RelativeLayout
+        android:layout_below="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_layout">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/graph_img"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            />
+        <com.example.ecgmonitor.customview.Grid
+            android:visibility="gone"
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/container"
+            />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_height="35dp">
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/edit_text_size"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button"
+            android:text="New Entry"/>
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/edit_text_size"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button"
+            android:text="Patient Record"/>
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/edit_text_size"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button"
+            android:text="Last Record"/>
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/edit_text_size"
+            android:textColor="@color/black"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button"
+            android:text="Profile"/>
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/edit_text_size"
+            android:textColor="@color/black"
+            android:id="@+id/setting_btn"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button"
+            android:text="Setting"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

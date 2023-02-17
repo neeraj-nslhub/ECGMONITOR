@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <ImageView
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="150dp"
+        android:layout_height="90dp"
+        android:src="@drawable/bluetooth_img"/>
+
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/edit_text_size"
+            android:textColor="@color/black"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:id="@+id/add_device_btn"
+            android:layout_marginTop="25dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="ADD DEVICE"
+            android:background="@drawable/button"/>
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/edit_text_size"
+            android:textColor="@color/black"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="25dp"
+            android:id="@+id/paired_device_btn"
+            android:text="PAIRED DEVICE"
+            android:layout_marginTop="10dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"/>
+    </LinearLayout>
+
+</RelativeLayout>

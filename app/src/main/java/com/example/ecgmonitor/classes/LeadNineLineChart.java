@@ -122,7 +122,7 @@ public class LeadNineLineChart extends Thread{
     }
     public void run() {
 
-        mInputStream = mData.get8();
+        mInputStream = mData.get();
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(mInputStream));
         try {

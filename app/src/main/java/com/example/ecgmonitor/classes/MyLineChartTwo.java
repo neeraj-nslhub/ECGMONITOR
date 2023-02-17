@@ -53,16 +53,16 @@ public class MyLineChartTwo {
         mLineChart.setData(data);
 
         // get the legend (only possible after setting data)
-        Legend l = mLineChart.getLegend();
-
-        // modify the legend ...
-        l.setForm(Legend.LegendForm.LINE);
-        l.setTextColor(R.color.red);
+//        Legend l = mLineChart.getLegend();
+//
+//        // modify the legend ...
+//        l.setForm(Legend.LegendForm.LINE);
+//        l.setTextColor(R.color.red);
 
         XAxis xl = mLineChart.getXAxis();
         xl.setTextColor(R.color.red);
         xl.setDrawGridLines(false);
-        xl.setAvoidFirstLastClipping(true);
+        xl.setAvoidFirstLastClipping(false);
         xl.setEnabled(true);
 
         YAxis leftAxis = mLineChart.getAxisLeft();
@@ -132,8 +132,8 @@ public class MyLineChartTwo {
             data.addEntry(new Entry(set.getEntryCount(), event), 0);
             data.notifyDataChanged();
             mLineChart.notifyDataSetChanged();
-            mLineChart.setVisibleXRange(500, 300);
-            mLineChart.moveViewToX(data.getEntryCount());
+            mLineChart.setVisibleXRange(500, 500);
+             mLineChart.moveViewToX(data.getEntryCount());
 
         }
     }

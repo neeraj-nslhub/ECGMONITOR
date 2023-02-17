@@ -1,8 +1,12 @@
 package com.example.ecgmonitor;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.ecgmonitor.classes.InputStreamData;
 import com.example.ecgmonitor.classes.LeadEightLineChart;
@@ -31,6 +35,7 @@ import com.example.ecgmonitor.classes.MyLineChartTwelve;
 import com.example.ecgmonitor.classes.MyLineChartTwo;
 import com.example.ecgmonitor.databinding.ActivityGraphBinding;
 import com.example.ecgmonitor.model.BluetoothData;
+import com.github.mikephil.charting.charts.LineChart;
 
 import java.io.IOException;
 
@@ -43,7 +48,9 @@ public class GraphActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         activityGraphBinding = ActivityGraphBinding.inflate(getLayoutInflater());
         setContentView(activityGraphBinding.getRoot());
-//
+
+
+
         MyLineChartOne myLineChartOne = new MyLineChartOne(GraphActivity.this, activityGraphBinding.lineChartOne);
         MyLineChartTwo myLineChartTwo = new MyLineChartTwo(GraphActivity.this, activityGraphBinding.lineChartTwo);
         MyLineChartThree myLineChartThree = new MyLineChartThree(GraphActivity.this, activityGraphBinding.lineChartThree);
@@ -77,9 +84,9 @@ public class GraphActivity extends AppCompatActivity  {
 //        LeadTenLineChart leadTenLineChart = new LeadTenLineChart(activityGraphBinding.lineChartTen, GraphActivity.this, bluetoothData);
 //        LeadElevenLineChart leadElevenLineChart = new LeadElevenLineChart(activityGraphBinding.lineChartEleven, GraphActivity.this, bluetoothData);
 //        LeadTwelveLineChart leadTwelveLineChart = new LeadTwelveLineChart(activityGraphBinding.lineChartTwelve, GraphActivity.this, bluetoothData);
-//
-//        inputStreamData.start();
-//        leadOneLineChart.start();
+
+      //  inputStreamData.start();
+     //   leadOneLineChart.start();
 //        leadTwoLineChart.start();
 //        leadThreeLineChart.start();
 //        leadFourLineChart.start();
@@ -98,6 +105,40 @@ public class GraphActivity extends AppCompatActivity  {
             public void onClick(View v) {
               //  thread.interrupt();
             }
+        });
+
+        activityGraphBinding.settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(GraphActivity.this);
+                dialog.setContentView(R.layout.setting);
+               // dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+              //  dialog.setCancelable(false);
+                dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+                Button addDevice = dialog.findViewById(R.id.add_device_btn);
+                Button pairedDevice = dialog.findViewById(R.id.paired_device_btn);
+
+                addDevice.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                    }
+                });
+
+                pairedDevice.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                    }
+                });
+
+                dialog.show();
+
+            }
+
         });
 
     }

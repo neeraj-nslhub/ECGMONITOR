@@ -122,7 +122,7 @@ public class LeadSevenLineChart extends Thread{
     }
     public void run() {
 
-        mInputStream = mData.get6();
+        mInputStream = mData.get();
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(mInputStream));
         try {

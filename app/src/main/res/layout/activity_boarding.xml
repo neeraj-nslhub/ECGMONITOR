@@ -19,6 +19,7 @@
             android:src="@drawable/ecg_line"
             android:background="@null"/>
         <TextView
+            android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="25dp"
              android:id="@+id/ecg"
             android:layout_centerVertical="true"
@@ -28,6 +29,7 @@
             android:textStyle="bold"
             android:text="ECG"/>
         <TextView
+            android:fontFamily="@font/montserrat_regular"
             android:id="@+id/monitor"
             android:layout_toRightOf="@+id/ecg"
             android:layout_centerVertical="true"
@@ -54,8 +56,9 @@
             android:id="@+id/sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_border_black">
+            android:background="@drawable/curve_rectangle_border_red">
             <TextView
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
@@ -81,8 +84,9 @@
             android:id="@+id/sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/red">
+            android:background="@drawable/curve_rectangle_red">
             <TextView
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"

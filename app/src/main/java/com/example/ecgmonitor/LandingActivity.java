@@ -88,6 +88,8 @@ public class LandingActivity extends AppCompatActivity {
         activityLandingBinding.existingPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(LandingActivity.this, LineChartActivity.class);
+                startActivity(intent);
 
 
             }
@@ -231,7 +233,7 @@ public class LandingActivity extends AppCompatActivity {
                       while ((line = reader.readLine()) != null)
                       {
                           String[] row = line.split(",");
-                          int column0 = Integer.parseInt(row[0]);
+                          double column0 = Double.parseDouble(row[0]);
                           int column1 = Integer.parseInt(row[1]);
                           int column2 = Integer.parseInt(row[2]);
                           int column3 = Integer.parseInt(row[3]);
@@ -243,7 +245,7 @@ public class LandingActivity extends AppCompatActivity {
                           int column9 = Integer.parseInt(row[9]);
                           int column10 = Integer.parseInt(row[10]);
                           int column11 = Integer.parseInt(row[11]);
-                          mNumber0 = column0;
+                        //  mNumber0 = column0;
                           Log.d("BluetoothSerialData","PositionO "+column0 );
                           Log.d("BluetoothSerialData","Position1 "+column1 );
                           Log.d("BluetoothSerialData","Position2 "+column2 );
