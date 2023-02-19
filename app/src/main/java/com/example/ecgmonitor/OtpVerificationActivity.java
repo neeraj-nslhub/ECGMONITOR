@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,14 +23,19 @@ import retrofit2.Response;
 public class OtpVerificationActivity extends AppCompatActivity {
 
     ActivityOtpVerificationBinding activityOtpVerificationBinding;
-    String mEmail, mCode;
+    String mEmail, mPassword, mCode;
+    String mCallType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityOtpVerificationBinding = ActivityOtpVerificationBinding.inflate(getLayoutInflater());
         setContentView(activityOtpVerificationBinding.getRoot());
+        mCallType = getIntent().getStringExtra("mCallType");
         mEmail = getIntent().getStringExtra("mEmail");
+        if(mCallType.equals("RESET PASSWORD"))
+            mPassword = getIntent().getStringExtra("mPassword");
         activityOtpVerificationBinding.mtextTwo.setText(mEmail);
+        Log.d("mCallType",mCallType);
 
         activityOtpVerificationBinding.resendTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -239,6 +245,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
     }
 
     private void callResendApi(String email) {
+        Log.d("mCallType","callResendApi"+mCallType);
         final GenerateOtpBody generateOtpBody = new GenerateOtpBody(email);
         ServerInterfaces serverApiInterface = RetrofitApi.getApiClient().create(ServerInterfaces.class);
         Call<GenerateOtpResponseBody> call = serverApiInterface.generatingOtp(generateOtpBody);
@@ -246,8 +253,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GenerateOtpResponseBody> call, Response<GenerateOtpResponseBody> response) {
                 GenerateOtpResponseBody generateOtpResponseBody = response.body();
-
-                    Toast.makeText(OtpVerificationActivity.this,""+generateOtpResponseBody.getData().getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(OtpVerificationActivity.this,""+generateOtpResponseBody.getData().getMessage(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -259,11 +265,27 @@ public class OtpVerificationActivity extends AppCompatActivity {
 
     private void showProgress() {
         mCode = activityOtpVerificationBinding.editOne.getText().toString()+ activityOtpVerificationBinding.editTwo.getText().toString()+activityOtpVerificationBinding.editThree.getText().toString()+activityOtpVerificationBinding.editFour.getText().toString()+activityOtpVerificationBinding.editFive.getText().toString()+activityOtpVerificationBinding.editSix.getText().toString();
-        Intent intent = new Intent(OtpVerificationActivity.this, ProgressAnim.class);
-        intent.putExtra("mCallType","REGISTRATION OTP");
-        intent.putExtra("mEmail",mEmail);
-        intent.putExtra("mCode",mCode);
-        startActivity(intent);
+        Log.d("mCallType","otp "+mCallType);
+        if(mCallType.equals("REGISTER OTP"))
+        {
+            Log.d("mCallType","register otp "+mCallType);
+            Intent intent = new Intent(OtpVerificationActivity.this, ProgressAnim.class);
+            intent.putExtra("mCallType", mCallType);
+            intent.putExtra("mEmail", mEmail);
+            intent.putExtra("mCode", mCode);
+            startActivity(intent);
+        }
+        else if(mCallType.equals("RESET PASSWORD"))
+        {
+            Log.d("mCallType","reset password otp "+mCallType);
+            Intent intent = new Intent(OtpVerificationActivity.this, ProgressAnim.class);
+            intent.putExtra("mCallType", "RESET PASSWORD OTP");
+            intent.putExtra("mEmail", mEmail);
+            intent.putExtra("mEmail", mPassword);
+            intent.putExtra("mCode", mCode);
+            startActivity(intent);
+
+        }
 
     }
 }

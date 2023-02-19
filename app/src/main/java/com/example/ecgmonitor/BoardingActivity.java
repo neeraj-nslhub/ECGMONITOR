@@ -27,6 +27,7 @@ public class BoardingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BoardingActivity.this, LogIn.class);
+                intent.putExtra("mCallType", "LOGIN");
                 startActivity(intent);
             }
         });
@@ -34,6 +35,7 @@ public class BoardingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BoardingActivity.this, RegisterEmail.class);
+                intent.putExtra("mCallType","REGISTER");
                 startActivity(intent);
             }
         });

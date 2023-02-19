@@ -2,6 +2,8 @@ package com.example.ecgmonitor.interfaces;
 
 import com.example.ecgmonitor.model.GenerateOtp.GenerateOtpBody;
 import com.example.ecgmonitor.model.GenerateOtp.GenerateOtpResponseBody;
+import com.example.ecgmonitor.model.ResetPassword.ResetPasswordOtpBody;
+import com.example.ecgmonitor.model.ResetPassword.ResetPasswordOtpResponseBody;
 import com.example.ecgmonitor.model.SignInBody;
 import com.example.ecgmonitor.model.SignInResponseBody;
 import com.example.ecgmonitor.model.SignUp.SignUpBody;
@@ -27,8 +29,7 @@ public interface ServerInterfaces {
     @POST("/account/forgot_password_otp/")
     Call<GenerateOtpResponseBody> generatingOtp(@Body GenerateOtpBody generateOtpBody);
 
-
-
-
+    @POST("/account/forgot_password_verify_otp/")
+    Call<ResetPasswordOtpResponseBody> resetingPassword(@Body ResetPasswordOtpBody resetPasswordOtpBody);
 
 }

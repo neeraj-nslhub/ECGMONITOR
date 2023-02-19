@@ -22,12 +22,14 @@ public class LogInEmail extends AppCompatActivity {
 
     ActivityLogInEmailBinding activityLogInEmailBinding;
     boolean mImgBtnFlag;
+    String mCallType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityLogInEmailBinding = ActivityLogInEmailBinding.inflate(getLayoutInflater());
         setContentView(activityLogInEmailBinding.getRoot());
+        mCallType = getIntent().getStringExtra("mCallType");
         mImgBtnFlag = false;
         activityLogInEmailBinding.emailEditText.requestFocus();
 
@@ -65,6 +67,7 @@ public class LogInEmail extends AppCompatActivity {
                 if(mImgBtnFlag)
                 {
                     Intent emailIntent = new Intent(LogInEmail.this,LogInPassword.class);
+                    emailIntent.putExtra("mCallType", mCallType);
                     emailIntent.putExtra("mEmail", activityLogInEmailBinding.emailEditText.getText().toString());
                     startActivity(emailIntent);
                 }

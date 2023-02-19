@@ -23,6 +23,7 @@ public class RegisterConfirmPassword extends AppCompatActivity {
     ActivityRegisterConfirmPasswordBinding activityRegisterConfirmPasswordBinding;
     String mEmail, mPassword;
     boolean mImgBtnFlag;
+    String mCallType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +32,11 @@ public class RegisterConfirmPassword extends AppCompatActivity {
         setContentView(activityRegisterConfirmPasswordBinding.getRoot());
         activityRegisterConfirmPasswordBinding.confirmPasswordEditText.requestFocus();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-
+        mCallType = getIntent().getStringExtra("mCallType");
         mEmail = getIntent().getStringExtra("mEmail");
         mPassword = getIntent().getStringExtra("mPassword");
         mImgBtnFlag = false;
+        activityRegisterConfirmPasswordBinding.headerText.setText("RESET PASSWORD");
 
         activityRegisterConfirmPasswordBinding.confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -69,9 +71,9 @@ public class RegisterConfirmPassword extends AppCompatActivity {
                 {
 
                     Intent intent = new Intent(RegisterConfirmPassword.this, ProgressAnim.class);
-                    intent.putExtra("mCallType", "REGISTRATION");
-                    intent.putExtra("mEmail",mEmail);
-                    intent.putExtra("mPassword",mPassword);
+                    intent.putExtra("mCallType", mCallType);
+                    intent.putExtra("mEmail", mEmail);
+                    intent.putExtra("mPassword", mPassword);
                     startActivity(intent);
 
                 }

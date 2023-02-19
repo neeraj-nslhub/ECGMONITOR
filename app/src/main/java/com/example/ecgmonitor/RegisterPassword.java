@@ -17,14 +17,18 @@ public class RegisterPassword extends AppCompatActivity {
     ActivityRegisterPasswordBinding activityRegisterPasswordBinding;
     boolean mImgBtnFlag;
     String mEmail;
+    String mCallType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityRegisterPasswordBinding = ActivityRegisterPasswordBinding.inflate(getLayoutInflater());
         setContentView(activityRegisterPasswordBinding.getRoot());
+        mCallType = getIntent().getStringExtra("mCallType");
         mImgBtnFlag = false;
         mEmail = getIntent().getStringExtra("mEmail");
+        if(mCallType.equals("RESET PASSWORD"))
+            activityRegisterPasswordBinding.headerText.setText("RESET PASSWORD");
         activityRegisterPasswordBinding.passwordEditText.requestFocus();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         activityRegisterPasswordBinding.passwordEditText.addTextChangedListener(new TextWatcher() {
@@ -60,8 +64,9 @@ public class RegisterPassword extends AppCompatActivity {
                 if(mImgBtnFlag)
                 {
                     Intent passwordIntent = new Intent(RegisterPassword.this, RegisterConfirmPassword.class);
-                    passwordIntent.putExtra("mEmail",mEmail);
-                    passwordIntent.putExtra("mPassword",activityRegisterPasswordBinding.passwordEditText.getText().toString());
+                    passwordIntent.putExtra("mCallType", mCallType);
+                    passwordIntent.putExtra("mEmail", mEmail);
+                    passwordIntent.putExtra("mPassword", activityRegisterPasswordBinding.passwordEditText.getText().toString());
                     startActivity(passwordIntent);
                 }
                 else

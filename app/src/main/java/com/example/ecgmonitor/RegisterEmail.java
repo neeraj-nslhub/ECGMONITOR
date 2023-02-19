@@ -19,12 +19,16 @@ public class RegisterEmail extends AppCompatActivity {
 
     ActivityRegisterEmailBinding activityRegisterEmailBinding;
     boolean mImgBtnFlag;
+    String mCallType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityRegisterEmailBinding = ActivityRegisterEmailBinding.inflate(getLayoutInflater());
         setContentView(activityRegisterEmailBinding.getRoot());
+        mCallType = getIntent().getStringExtra("mCallType");
         mImgBtnFlag = false;
+        if(mCallType.equals("RESET PASSWORD"))
+            activityRegisterEmailBinding.headerText.setText("RESET PASSWORD");
         activityRegisterEmailBinding.emailEditText.requestFocus();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
@@ -60,6 +64,7 @@ public class RegisterEmail extends AppCompatActivity {
                 if(mImgBtnFlag)
                 {
                     Intent emailIntent = new Intent(RegisterEmail.this,RegisterPassword.class);
+                    emailIntent.putExtra("mCallType", mCallType);
                     emailIntent.putExtra("mEmail", activityRegisterEmailBinding.emailEditText.getText().toString());
                     startActivity(emailIntent);
                 }

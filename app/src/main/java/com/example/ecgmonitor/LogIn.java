@@ -11,16 +11,20 @@ import com.example.ecgmonitor.databinding.ActivityLogInBinding;
 public class LogIn extends AppCompatActivity {
 
     ActivityLogInBinding activityLogInBinding;
+    String mCallType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityLogInBinding = ActivityLogInBinding.inflate(getLayoutInflater());
         setContentView(activityLogInBinding.getRoot());
+        mCallType = getIntent().getStringExtra("mCallType");
 
         activityLogInBinding.email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogIn.this, LogInEmail.class);
+                intent.putExtra("mCallType",mCallType);
                 startActivity(intent);
             }
         });
@@ -28,6 +32,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogIn.this, RegisterEmail.class);
+                intent.putExtra("mCallType","RESET PASSWORD");
                 startActivity(intent);
             }
         });
@@ -35,6 +40,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogIn.this, RegisterEmail.class);
+                intent.putExtra("mCallType",mCallType);
                 startActivity(intent);
             }
         });

@@ -18,12 +18,14 @@ public class LogInPassword extends AppCompatActivity {
     ActivityLogInPasswordBinding activityLogInPasswordBinding;
     String mEmail;
     boolean mImgBtnFlag;
+    String mCallType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityLogInPasswordBinding = ActivityLogInPasswordBinding.inflate(getLayoutInflater());
         setContentView(activityLogInPasswordBinding.getRoot());
+        mCallType = getIntent().getStringExtra("mCallType");
         mImgBtnFlag = false;
         mEmail = getIntent().getStringExtra("mEmail");
         activityLogInPasswordBinding.passwordEditText.requestFocus();
@@ -59,7 +61,7 @@ public class LogInPassword extends AppCompatActivity {
                 if(mImgBtnFlag)
                 {
                     Intent passwordIntent = new Intent(LogInPassword.this, ProgressAnim.class);
-                    passwordIntent.putExtra("mCallType", "LOGIN");
+                    passwordIntent.putExtra("mCallType", mCallType);
                     passwordIntent.putExtra("mEmail",mEmail);
                     passwordIntent.putExtra("mPassword",activityLogInPasswordBinding.passwordEditText.getText().toString());
                     startActivity(passwordIntent);

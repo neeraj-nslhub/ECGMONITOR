@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, LineChartActivity.class);
+                Intent intent = new Intent(MainActivity.this, BoardingActivity.class);
                 startActivity(intent);
                 finish();
             }
